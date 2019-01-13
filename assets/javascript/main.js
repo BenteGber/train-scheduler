@@ -1,8 +1,7 @@
 const log = console.log;
 
-
-var clock = moment().format('MMMM Do YYYY, HH:mm');
 // Clock for display purposes
+var clock = moment().format('MMMM Do YYYY, HH:mm');
 $(document).ready(function () {
     setInterval(function () {
         clock = moment().format('MMMM Do YYYY, HH:mm:ss');
@@ -10,7 +9,7 @@ $(document).ready(function () {
     }, 1000)
 });
 
-
+// Firebase intializer
 var config = {
     apiKey: "AIzaSyAm85SM97-VmBvghuro7vbuOUaYepd5oSk",
     authDomain: "train-scheduler-f52f0.firebaseapp.com",
@@ -22,19 +21,27 @@ var config = {
 firebase.initializeApp(config);
 
 let database = firebase.database();
-
-
-
+// when submitting new trains>>>
 $('#form-submit').on('click', function (event) {
-
     event.preventDefault();
-
     let train = $('#train-name-input').val().trim();
     let destination = $('#destination-input').val().trim();
-    let firstTrain = moment($('#first-train-input').val().trim(), 'HH:mm').format("X");
-    let frequnecy = $('#frequency-input').val().trim();
-
-    database.ref().push({ name: train, destination: destination, firstTrain: firstTrain, frequency: frequnecy });
+    let firstTrainInput = $('#first-train-input').val().trim();
+    let firstTrain = moment(firstTrainInput, 'HH:mm').format("X");
+    let frequency = $('#frequency-input').val().trim();
+    let timeFormat = /[0-9]{2}\:[0-9]{2}/;
+    if (train !== "" &&
+        destination !== "" &&
+        timeFormat.test(firstTrainInput) &&
+        frequency > 0) {
+        database.ref().push({
+            name: train,
+            destination: destination,
+            firstTrain: firstTrain,
+            frequency: frequency
+        });
+        $('#train-adder')[0].reset();
+    } else { alert("Please ensure your form is completed correctly") }
 
 })
 
@@ -64,3 +71,4 @@ database.ref().on('child_added', function (snapshot) {
                             </tr>`)
 
 });
+
