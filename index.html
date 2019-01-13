@@ -19,6 +19,25 @@
 </head>
 
 <body>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Uh-oh</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Please ensure your form is completed correctly</p>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="wrapper" class="container-fluid">
         <div class="container transparent">
             <div id="header" class="row">
@@ -30,24 +49,24 @@
                     <div class="form-group">
                         <h3>Add a train</h3>
                         <hr>
-                        <form action="index.html" autocomplete="on">
-                            <label for="">Train Name</label>
-                            <input type="text" class="form-control" name="" id="train-name-input" aria-describedby="helpId"
-                                required placeholder="Hogwart's Express">
-                            <small id="helpId" class="form-text text-muted"></small>
-                            <label for="">Destination</label>
-                            <input type="text" class="form-control" name="" id="destination-input" aria-describedby="helpId"
-                                required placeholder="Hogwarts School of Witchcraft and Wizardry">
-                            <small id="helpId" class="form-text text-muted"></small>
-                            <label for="">First train time</label>
-                            <input type="text" class="form-control" name="" id="first-train-input" aria-describedby="helpId"
-                                required pattern="[0-9]{2}:[0-9]{2}" placeholder="06:15" title='Entry should be in military time:"HH:mm"'>
-                            <small id="helpId" class="form-text text-muted">HH:mm military time</small>
-                            <label for="">Frequency</label>
-                            <input type="number" class="form-control" name="" id="frequency-input" aria-describedby="helpId"
-                                required placeholder="15,45,90,...">
-                            <small id="helpId" class="form-text text-muted">minutes</small>
-                            <button type="button" class="btn btn-primary" id="form-submit" onclick='validate()'>Submit</button>
+                        <form id='train-adder' action="index.html" autocomplete="on">
+                            <label>Train Name</label>
+                            <input type="text" class="form-control" id="train-name-input" aria-described required
+                                placeholder="Hogwart's Express">
+                            <small class="form-text text-muted"></small>
+                            <label>Destination</label>
+                            <input type="text" class="form-control" id="destination-input" aria-described required
+                                placeholder="Hogwarts School of Witchcraft and Wizardry">
+                            <small class="form-text text-muted"></small>
+                            <label>First train time</label>
+                            <input type="text" class="form-control" id="first-train-input" aria-described required
+                                pattern="/[0-9]{2}\:[0-9]{2}/" placeholder="06:15" title='Entry should be in military time:"HH:mm"'>
+                            <small class="form-text text-muted">HH:mm military time</small>
+                            <label>Frequency</label>
+                            <input type="number" class="form-control" id="frequency-input" aria-described required
+                                placeholder="15,45,90,...">
+                            <small class="form-text text-muted">minutes</small>
+                            <button type="button" class="btn btn-primary" id="form-submit" onclick=''>Submit</button>
                         </form>
                     </div>
 
@@ -58,6 +77,10 @@
                         <thead>
                             <tr id="table-head">
                                 <th scope="rowgroup">Train Schedule</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             <tr>
                                 <th>Train Name</th>
@@ -76,7 +99,13 @@
                 </div>
 
             </div>
+
+
         </div>
+        <footer class="row">
+            <p id="copyright"></p>
+        </footer>
+
     </div>
 
 
@@ -87,16 +116,15 @@
 
 
 
-
-    < <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
-        <!-- Moment Js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.js"></script>
-        <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-        <!-- Main Js -->
-        <script src="assets/javascript/main.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <!-- Moment Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Main Js -->
+    <script src="assets/javascript/main.js"></script>
 </body>
 
 </html>

@@ -12,8 +12,11 @@ h1{
 th {
     font-family: 'Merriweather', serif;
 }
-#table-head{
+#table-head th{
     font-size: 1.5rem;
+    background-color:rgba(65, 65, 65, 1);
+    border-radius: 0 0 0 0;
+    color:rgb(250, 250, 250);
 }
 
 h3 {
@@ -38,6 +41,7 @@ small {
     background-size: contain;
     background-position: center;
     background-color: black;
+    border-radius: 0%;
   
 }
  .row :first-child{
@@ -54,4 +58,9 @@ small {
 }
 .form-group button{
     margin-top: .25rem;
+}
+footer{
+    padding: 1rem;
+    background-color: black;
+    color: rgba(169, 169, 169, 1);
 }
